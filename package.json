@@ -2,7 +2,7 @@
     "name": "@safeswap/sdk",
     "version": "0.1.0",
     "description": "An SDK for building applications using the SafeEcosystem",
-    "private": true,
+    "private": false,
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "files": [
