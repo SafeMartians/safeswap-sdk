@@ -1,2 +1,2 @@
 export * from './token'
-import * from './currency'
+export * from './currency'

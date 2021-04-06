@@ -1,62 +1,44 @@
 {
-  "name": "@safeswap/sdk",
-  "version": "0.1.0",
-  "description": "An SDK for building applications using the SafeEcosystem",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "tiny-invariant": "^1.1.0",
-    "web-vitals": "^1.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+    "name": "@safeswap/sdk",
+    "version": "0.1.0",
+    "description": "An SDK for building applications using the SafeEcosystem",
+    "private": true,
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts",
+    "files": [
+        "dist"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SafeMartians/safeswap-sdk.git"
-  },
-  "keywords": [
-    "SafeMars",
-    "SafeEarth",
-    "SafeSwap",
-    "Ethereum",
-    "Binance",
-    "BSC"
-  ],
-  "author": "NegativeHoro",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SafeMartians/safeswap-sdk/issues"
-  },
-  "homepage": "https://github.com/SafeMartians/safeswap-sdk#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.13.14",
-    "@babel/preset-react": "^7.12.13"
-  }
+    "module": "dist/sdk.esm.js",
+    "scripts": {
+        "build": "tsdx build",
+        "start": "tsdx watch",
+        "test": "tsdx test",
+        "prepublishOnly": "tsdx build"
+    },
+    "dependencies": {
+        "@ethersproject/address": "^5.1.0",
+        "tiny-invariant": "^1.1.0",
+        "tsdx": "^0.14.1"
+    },
+    "devDependencies": {
+        "tsdx": "^0.14.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SafeMartians/safeswap-sdk.git"
+    },
+    "keywords": [
+        "SafeMars",
+        "SafeEarth",
+        "SafeSwap",
+        "Ethereum",
+        "Binance",
+        "BSC"
+    ],
+    "author": "NegativeHoro",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/SafeMartians/safeswap-sdk/issues"
+    },
+    "homepage": "https://github.com/SafeMartians/safeswap-sdk#readme"
 }

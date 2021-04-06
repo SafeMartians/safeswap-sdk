@@ -1,6 +1,7 @@
-import { invariant } from 'tiny-invariant'
-import { ChainId } from 'types.ts'
+import invariant from 'tiny-invariant'
+import { ChainId } from '../types'
 import Currency from './currency'
+import { validateAndParseAddress } from '../utils'
 
 /**
 * Represents an ERC20 token with a unique address and some metadata.
