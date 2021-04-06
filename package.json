@@ -1,0 +1,27 @@
+{
+  "name": "@safeswap/sdk",
+  "version": "1.0.0-beta.0",
+  "description": "An SDK for building applications using the SafeEcosystem",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SafeMartians/safeswap-sdk.git"
+  },
+  "keywords": [
+    "SafeMars",
+    "SafeEarth",
+    "SafeSwap",
+    "Ethereum",
+    "Binance",
+    "BSC"
+  ],
+  "author": "NegativeHoro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SafeMartians/safeswap-sdk/issues"
+  },
+  "homepage": "https://github.com/SafeMartians/safeswap-sdk#readme"
+}
