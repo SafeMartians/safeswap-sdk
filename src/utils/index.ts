@@ -1,3 +1,3 @@
-import validateAndParseAddress from './validateAndParseAddress'
+import validateAndChecksumAddress from './validateAndChecksumAddress'
 
-export { validateAndParseAddress }
+export { validateAndChecksumAddress }

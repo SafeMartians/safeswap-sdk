@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "@ethersproject/address": "^5.1.0",
+        "@types/jest": "^26.0.22",
         "tiny-invariant": "^1.1.0",
         "tsdx": "^0.14.1"
     },

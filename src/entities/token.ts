@@ -1,7 +1,7 @@
 import invariant from 'tiny-invariant'
 import { ChainId } from '../types'
 import Currency from './currency'
-import { validateAndParseAddress } from '../utils'
+import { validateAndChecksumAddress } from '../utils'
 
 /**
 * Represents an ERC20 token with a unique address and some metadata.
@@ -13,7 +13,7 @@ export default class Token extends Currency {
     public constructor(chainId: ChainId | number, address: string, decimals: number, symbol?: string, name?: string) {
         super(decimals, symbol, name)
         this.chainId = chainId
-        this.address = validateAndParseAddress(address)
+        this.address = validateAndChecksumAddress(address)
     }
 
     /**
