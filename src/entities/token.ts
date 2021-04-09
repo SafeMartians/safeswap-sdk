@@ -1,12 +1,19 @@
 import invariant from 'tiny-invariant'
-import { ChainId } from '../types'
-import Currency from './currency'
+import { ChainId, TokenInfo } from '../types'
+import { Currency } from './currency'
 import { validateAndChecksumAddress } from '../utils'
+
+export type TokenAddressMap = Readonly<
+    { [chainId in ChainId]: Readonly<{ [tokenAddress: string]: WrappedTokenInfo }> }
+>
+
+const tokenMapCache: WeakMap<TokenInfo[], TokenAddressMap> =
+    typeof WeakMap !== 'undefined' ? new WeakMap<TokenInfo[], TokenAddressMap>() : null
 
 /**
 * Represents an ERC20 token with a unique address and some metadata.
 */
-export default class Token extends Currency {
+export class Token extends Currency {
     public readonly chainId: number
     public readonly address: string
 
@@ -39,4 +46,46 @@ export default class Token extends Currency {
         invariant(this.address !== other.address, 'ADDRESSES')
         return this.address.toLowerCase() < other.address.toLowerCase()
     }
+}
+
+export class WrappedTokenInfo extends Token {
+    public readonly tokenInfo: TokenInfo
+
+    public constructor(tokenInfo: TokenInfo) {
+        super(tokenInfo.chainId, tokenInfo.address, tokenInfo.decimals, tokenInfo.symbol, tokenInfo.name)
+        this.tokenInfo = tokenInfo
+    }
+
+    public get logoURI(): string {
+        return this.tokenInfo.logoURI
+    }
+}
+
+const EMPTY_TOKEN_ADDRESS_MAP = {
+    [ChainId.SMART_CHAIN]: {},
+    [ChainId.SMART_CHAIN_TESTNET]: {},
+}
+
+export function listToTokenMap(tokenList: TokenInfo[]) {
+    const cachedTokenMap = tokenMapCache?.get(tokenList);
+    if (cachedTokenMap) return cachedTokenMap;
+
+    const tokenMap = Array.from(tokenList).reduce<TokenAddressMap>(
+        (map, tokenInfo) => {
+            const token = new WrappedTokenInfo(tokenInfo);
+
+            // remove duplicates tokens
+            if (map[token.chainId] && map[token.chainId][token.address] !== undefined) throw Error('Duplicate tokens.')
+            return {
+                ...map,
+                [token.chainId]: {
+                    ...map[token.chainId],
+                    [token.address]: token
+                }
+            };
+        },
+        { ...EMPTY_TOKEN_ADDRESS_MAP }
+    );
+    tokenMapCache?.set(tokenList, tokenMap);
+    return tokenMap;
 }

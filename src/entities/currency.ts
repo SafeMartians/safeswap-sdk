@@ -5,7 +5,7 @@ import invariant from 'tiny-invariant'
  *
  * The only instance of the base class `Currency` is Ether.
  */
-export default class Currency {
+export class Currency {
   public readonly decimals: number
   public readonly symbol?: string
   public readonly name?: string
