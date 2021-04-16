@@ -1,6 +1,9 @@
 import BigNumber from 'bignumber.js';
 import { Currency } from './currency';
 
+// Active rounding down mode
+BigNumber.set({ROUNDING_MODE: 1});
+
 export class CurrencyBalance {
     private readonly decimals: BigNumber;
     private readonly balance: BigNumber;
@@ -20,7 +23,7 @@ export class CurrencyBalance {
         return this.value().toFixed();
     }
 
-    public toFormat(): string {
-        return this.value().toFormat();
+    public toFormat(decimalPlaces: number | undefined = undefined): string {
+        return this.value().toFormat(decimalPlaces);
     }
 }

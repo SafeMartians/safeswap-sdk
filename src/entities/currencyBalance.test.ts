@@ -24,5 +24,13 @@ describe('currencyBalance', () => {
             expect(ETH_BALANCE_2.toFormat())
             .toEqual('2,003');
         })
+
+        it('Returns correct decimal places', () => {
+            expect(ETH_BALANCE_1.toFormat(5))
+            .toEqual('123,456,789.12345')
+
+            expect(ETH_BALANCE_2.toFormat(5))
+            .toEqual('2,003.00000');
+        })
     })
 })
